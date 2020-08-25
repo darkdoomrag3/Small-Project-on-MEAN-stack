@@ -1,15 +1,21 @@
 <mat-card>
+    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
 
-    <mat-form-field class="example-full-width">
-        <textarea matInput rows="6" [(ngModel)]="enterdValue"></textarea>
-        <button mat-raised-button color="warn" (click)="onAddPost()">Save Post</button>
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" ngModel name="title" required #title="ngModel">
+            <mat-error *ngIf="title.invalid">Please Add Title</mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <textarea matInput rows="6" ngModel name="content" required #content="ngModel"></textarea>
+            <mat-error *ngIf="content.invalid">Please Add Content</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="warn" type="submit">Save Post</button>
+
+
+    </form>
 
 
 </mat-card>
-
-
-
-
-
-<p>{{newPost}}</p>
